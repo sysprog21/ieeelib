@@ -1,13 +1,15 @@
+BINDIR ?= bin
+
 GEN_DIR := gen
 SRC_DIR := src
 BIN_DIR := bin
 
 CC      := gcc
-C_FLAGS := -c -O2 -msoft-float
+C_FLAGS := $(CFLAGS) -c -O2 -msoft-float
 # The INCLUDE must provide the required header files (longlong.h etc.), in the form INCLUDE=I<dir>
-INCLUDE :=
+INCLUDE := -Iinclude
 AR      := ar
-OUTPUT  := libsoft-fp.a
+OUTPUT  := $(BINDIR)/libsoft-fp.a
 
 FILES     := sfieeelib dfieeelib sfdfcvt
 SRC_FILES := $(patsubst %, $(GEN_DIR)/%.c, $(FILES))
